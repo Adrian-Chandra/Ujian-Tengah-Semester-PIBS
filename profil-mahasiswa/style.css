@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
 }
@@ -10,10 +9,19 @@ html {
 body {
     margin: 0;
     padding: 10px;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    background: white;
-    color: black;
+    background: #fff;
+    color: #222;
+    line-height: 1.6;
+}
+
+input[name="menu"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
 }
 
 .browser {
@@ -24,20 +32,22 @@ body {
         "header header header"
         "nav section aside"
         "footer footer footer";
-    border: 2px solid #aaa;
-    max-width: 1000px;
-    margin: auto;
-    padding: 4px;
     gap: 3px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4px;
+    border: 2px solid #999;
+    background: #fff;
 }
 
 .browser-title {
     grid-area: title;
-    background: #ddd;
-    border: 1px solid #999;
-    padding: 4px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 3px 6px;
+    background: #e5e5e5;
+    border: 1px solid #aaa;
     font-size: 10px;
 }
 
@@ -48,57 +58,72 @@ body {
 header {
     grid-area: header;
     position: relative;
-    min-height: 65px;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 8px;
+    min-height: 72px;
+    padding: 10px;
     border: 1px solid #b7dfe5;
+    background: #fafcfd;
 }
 
 .profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 42px;
     height: 42px;
+    flex-shrink: 0;
     border: 1px solid #1684d5;
     color: #1684d5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
+    font-size: 30px;
 }
 
 header h3 {
     margin: 0;
+    font-size: 14px;
 }
 
 .layout-label,
 .nav-title,
 .section-title,
 .aside-title {
-    color: red;
-    font-weight: bold;
+    color: #e53935;
     font-size: 15px;
+    font-weight: bold;
 }
 
 .layout-label {
     position: absolute;
     left: 55%;
-    top: 18px;
+    top: 15px;
+}
+
+.width-label,
+.desktop-width {
+    color: #e53935;
+    font-weight: bold;
+    text-align: center;
 }
 
 nav {
     grid-area: nav;
     position: relative;
     min-width: 0;
-    min-height: 200px;
-    border: 1px solid #aaa;
+    min-height: 260px;
     padding: 10px;
+    border: 1px solid #aaa;
+    background: #fff;
+}
+
+.nav-title {
+    display: none;
 }
 
 nav ul,
 aside ul {
-    padding-left: 12px;
-    margin-top: 8px;
+    margin: 5px 0;
+    padding-left: 15px;
 }
 
 nav li,
@@ -106,61 +131,167 @@ aside li {
     margin-bottom: 5px;
 }
 
-nav a {
-    color: inherit;
-    text-decoration: none;
+nav label {
+    display: block;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
 }
 
-nav a:hover {
+nav label:hover {
+    color: #0879bc;
     text-decoration: underline;
 }
 
-.nav-title {
-    display: none;
+#menu-biodata:checked ~ .browser nav label[for="menu-biodata"],
+#menu-pendidikan:checked ~ .browser nav label[for="menu-pendidikan"],
+#menu-pengalaman:checked ~ .browser nav label[for="menu-pengalaman"],
+#menu-keahlian:checked ~ .browser nav label[for="menu-keahlian"],
+#menu-publikasi:checked ~ .browser nav label[for="menu-publikasi"] {
+    color: #0879bc;
+    font-weight: bold;
 }
 
-section {
+.section-area {
     grid-area: section;
     position: relative;
     min-width: 0;
-    min-height: 200px;
+    min-height: 260px;
     padding: 15px;
     border: 1px solid #b7dfe5;
+    background: #fff;
 }
 
-section h4 {
-    margin-top: 0;
+.section-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+.content-panel {
+    display: none;
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    animation: appear 0.2s ease;
+}
+
+.content-panel h2 {
+    margin: 0 0 15px;
+    color: #222;
+    font-size: 15px;
+}
+
+.content-panel h3 {
+    margin: 0 0 5px;
+    font-size: 13px;
+}
+
+.content-panel p {
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+}
+
+#menu-biodata:checked ~ .browser .biodata-panel,
+#menu-pendidikan:checked ~ .browser .pendidikan-panel,
+#menu-pengalaman:checked ~ .browser .pengalaman-panel,
+#menu-keahlian:checked ~ .browser .keahlian-panel,
+#menu-publikasi:checked ~ .browser .publikasi-panel {
+    display: block;
 }
 
 .biodata {
-    margin-left: 15px;
-    font-size: 11px;
+    padding-left: 12px;
 }
 
 .biodata p {
-    margin: 8px 0;
+    margin: 7px 0;
 }
 
 .biodata strong {
     display: inline-block;
-    min-width: 105px;
+    min-width: 115px;
+}
+
+.info-item,
+.publication {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.info-number,
+.publication-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b7dfe5;
+    background: #f1f9fc;
+    color: #1679ae;
+    font-weight: bold;
+}
+
+.muted,
+.note,
+.description {
+    color: #666;
+    font-size: 11px;
+}
+
+.note {
+    margin-top: 18px !important;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.skill-list {
+    margin: 12px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.skill-status {
+    color: #1679ae;
+    font-size: 10px;
+    text-align: right;
+}
+
+.publication-icon {
+    font-size: 19px;
 }
 
 aside {
     grid-area: aside;
     position: relative;
     min-width: 0;
-    min-height: 200px;
+    min-height: 260px;
     padding: 10px;
     border: 1px solid #aaa;
+    background: #fff;
 }
 
 .aside-title {
     display: none;
 }
 
-aside h4 {
+aside h2 {
     margin: 0;
+    font-size: 12px;
     font-style: italic;
     font-weight: normal;
 }
@@ -176,9 +307,10 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    min-height: 48px;
-    padding: 5px;
+    min-height: 55px;
+    padding: 7px;
     border: 1px solid #b7dfe5;
+    background: #fafcfd;
     font-size: 10px;
 }
 
@@ -201,7 +333,16 @@ footer {
     display: none;
 }
 
-/* TABLET LANDSCAPE */
+@keyframes appear {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .browser {
         grid-template-columns: 30% 70%;
@@ -213,20 +354,22 @@ footer {
             "footer footer";
     }
 
-    nav {
-        min-height: 300px;
-    }
-
-    section {
+    nav,
+    .section-area {
         min-height: 300px;
     }
 
     aside {
-        min-height: 80px;
+        min-height: 85px;
+    }
+
+    aside ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px 20px;
     }
 }
 
-/* TABLET PORTRAIT */
 @media (min-width: 481px) and (max-width: 768px) {
     .browser {
         grid-template-columns: 100%;
@@ -240,36 +383,37 @@ footer {
     }
 
     nav,
-    section,
+    .section-area,
     aside {
-        min-height: 100px;
+        min-height: 130px;
     }
 
     .nav-title,
     .aside-title {
         display: block;
-        margin: 5px 0;
+        margin: 4px 0 8px;
     }
 
     nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 8px 14px;
         padding: 0;
-        margin: 5px 0;
     }
 
     nav li {
         list-style: none;
     }
 
-    .layout-label,
-    .desktop-width {
+    .layout-label {
         display: none;
+    }
+
+    .section-area {
+        min-height: 220px;
     }
 }
 
-/* SMARTPHONE */
 @media (max-width: 480px) {
     body {
         padding: 5px;
@@ -289,11 +433,17 @@ footer {
     }
 
     header {
-        min-height: 60px;
+        min-height: 65px;
+        gap: 10px;
     }
 
     header h3 {
         font-size: 13px;
+    }
+
+    .profile-icon {
+        width: 38px;
+        height: 38px;
     }
 
     .layout-label {
@@ -301,10 +451,10 @@ footer {
     }
 
     nav,
-    section,
+    .section-area,
     aside {
         min-height: auto;
-        padding: 8px;
+        padding: 10px;
     }
 
     .nav-title,
@@ -323,26 +473,25 @@ footer {
         margin-bottom: 4px;
     }
 
+    .section-area {
+        min-height: 220px;
+    }
+
     .biodata {
-        margin-left: 0;
-        font-size: 10px;
+        padding-left: 0;
     }
 
     .biodata strong {
-        min-width: 95px;
+        min-width: 100px;
     }
 
-    .width-label {
-        display: block;
-        color: red;
-        text-align: center;
-        font-weight: bold;
-        border-bottom: 1px dashed red;
-        margin: 5px 0;
+    aside ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px 15px;
     }
 
     footer {
-        flex-direction: row;
         flex-wrap: wrap;
         font-size: 9px;
     }
@@ -350,6 +499,39 @@ footer {
     .social,
     .copyright,
     .website {
-        flex: 1 1 30%;
+        flex: 1 1 28%;
+        overflow-wrap: anywhere;
     }
+
+    .width-label {
+        display: block;
+        margin: 5px 0 0;
+        border-bottom: 1px dashed #e53935;
+    }
+}
+
+input[name="menu"]:focus-visible ~ .browser nav label {
+    outline-offset: 3px;
+}
+
+input[name="menu"]:focus-visible ~ .browser nav label:focus-visible {
+    outline: 2px solid #1684d5;
+}
+
+
+.profile-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    overflow: hidden;
+    border: 1px solid #1684d5;
+    border-radius: 50%;
+}
+
+.profile-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
 }

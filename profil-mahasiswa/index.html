@@ -9,65 +9,174 @@
 </head>
 <body>
 
+    <input type="radio" name="menu" id="menu-biodata" checked>
+    <input type="radio" name="menu" id="menu-pendidikan">
+    <input type="radio" name="menu" id="menu-pengalaman">
+    <input type="radio" name="menu" id="menu-keahlian">
+    <input type="radio" name="menu" id="menu-publikasi">
+
     <div class="browser">
+
         <div class="browser-title">
-            <span>NAMA WEB</span>
+            <span>ADRIAN WEB</span>
             <span class="window-icons">□ ×</span>
         </div>
 
         <header>
-            <div class="profile-icon">◇</div>
+            <div class="profile-icon">
+                <img src="orang ganteng.jpeg" alt="Foto Ceppy Adrian Chandra">
+            </div>
             <h3>Profil Mahasiswa</h3>
-            <span class="layout-label">HEADER</span>
-            <span class="width-label">100%</span>
         </header>
 
-        <nav>
+        <nav aria-label="Navigasi profil mahasiswa">
             <div class="nav-title">NAV</div>
-            <span class="width-label">100%</span>
+
             <ul>
-                <li><a href="#biodata">Biodata</a></li>
-                <li><a href="#pendidikan">Pendidikan</a></li>
-                <li><a href="#pengalaman">Pengalaman</a></li>
-                <li><a href="#keahlian">Keahlian</a></li>
-                <li><a href="#publikasi">Publikasi</a></li>
+                <li><label for="menu-biodata">Biodata</label></li>
+                <li><label for="menu-pendidikan">Pendidikan</label></li>
+                <li><label for="menu-pengalaman">Pengalaman</label></li>
+                <li><label for="menu-keahlian">Keahlian</label></li>
+                <li><label for="menu-publikasi">Publikasi</label></li>
             </ul>
+
             <span class="desktop-width">25%</span>
         </nav>
 
-        <section id="biodata">
-            <div class="section-title">SECTION</div>
-            <h4>Biodata</h4>
-            <div class="biodata">
-                <p><strong>NIM:</strong> 2025081059</p>
-                <p><strong>Nama:</strong> Ceppy Adrian Chandra</p>
-                <p><strong>Program Studi:</strong> Sistem Informasi</p>
-                <p><strong>Agama:</strong> Islam</p>
-                <p><strong>Tanggal Lahir:</strong> [Tanggal lahir]</p>
-                <p><strong>Tempat Lahir:</strong> [Tempat lahir]</p>
-            </div>
+        <main class="section-area">
+
+            <article class="content-panel biodata-panel">
+                <h2>Biodata</h2>
+
+                <div class="biodata">
+                    <p><strong>NIM:</strong> 2025081059</p>
+                    <p><strong>Nama:</strong> Ceppy Adrian Chandra</p>
+                    <p><strong>Program Studi:</strong> Sistem Informasi</p>
+                    <p><strong>Agama:</strong> Islam</p>
+                    <p><strong>Tanggal Lahir:</strong> 9 Oktober 2005</p>
+                    <p><strong>Tempat Lahir:</strong> Ciledug, Tangerang</p>
+                </div>
+            </article>
+
+
+            <article class="content-panel pendidikan-panel">
+                <h2>Pendidikan</h2>
+
+                <div class="info-item">
+                    <span class="info-number">01</span>
+                    <div>
+                        <h3>S1 Sistem Informasi</h3>
+                        <p>Universitas Pembangunan Jaya</p>
+                        <p class="muted">2025 – Sekarang</p>
+                        <p>Sedang menempuh pendidikan tinggi
+                        di bidang Sistem Informasi.</p>
+                    </div>
+                </div>
+
+                <p class="note">
+                    SDN Rawabuntu 03
+                    SMP Erenos
+                    SMK Waskito
+                </p>
+            </article>
+
+            <article class="content-panel pengalaman-panel">
+                <h2>Pengalaman</h2>
+
+                <div class="info-item">
+                    <span class="info-number">01</span>
+                    <div>
+                        <h3>Proyek Website Profil Mahasiswa</h3>
+                        <p class="muted">Proyek pembelajaran</p>
+                        <p>
+                            Membuat halaman profil mahasiswa
+                            menggunakan HTML dan CSS, termasuk
+                            layout responsif dan navigasi
+                            antarkonten.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="note">
+                    Pernah membuat website
+                    marketplace yang berfokus pada 
+                    fashion.
+                </p>
+            </article>
+
+            <article class="content-panel keahlian-panel">
+                <h2>Keahlian</h2>
+
+                <p class="description">
+                    Merancang database
+                    Merancang website
+                    Merancang Aplikasi Bergerak
+                </p>
+
+                <ul class="skill-list">
+                    <li>
+                        <span>HTML</span>
+                        <span class="skill-status">Intermediate</span>
+                    </li>
+                    <li>
+                        <span>CSS</span>
+                        <span class="skill-status">Intermediate</span>
+                    </li>
+                    <li>
+                        <span>Sistem Basis Data</span>
+                        <span class="skill-status">Intermediate</span>
+                    </li>
+                    <li>
+                        <span>Perancangan Basis Data</span>
+                        <span class="skill-status">In learning</span>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="content-panel publikasi-panel">
+                <h2>Publikasi</h2>
+
+                <div class="publication">
+                    <span class="publication-icon">↗</span>
+                    <div>
+                        <h3>Karya dan Publikasi</h3>
+                        <p>
+                            Belum memiliki
+                            karya publikasi.
+                        </p>
+                        <p class="muted">
+                            Belum ada publikasi yang dicantumkan.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
             <span class="width-label">100%</span>
             <span class="desktop-width">50%</span>
-        </section>
+        </main>
 
         <aside>
             <div class="aside-title">ASIDE</div>
-            <h4>Hobi:</h4>
+
+            <h2>Hobi:</h2>
             <ul>
-                <li>Bermain musik</li>
                 <li>Mendengarkan musik</li>
-                <li>Belajar pemrograman</li>
-                <li>Membaca</li>
+                <li>Bernyanyi</li>
+                <li>Olahraga</li>
+                <li>Bermain Basket</li>
             </ul>
+
             <span class="width-label">100%</span>
             <span class="desktop-width">25%</span>
         </aside>
 
         <footer>
             <div class="social">
-                Twitter: @akun<br>
-                FB: @akun<br>
-                Instagram: @akun
+                <strong>Media Sosial</strong><br>
+                Twitter: @adriandavrn<br>
+                Instagram: @adriandavrn<br>
+                Facebook: Adrian Chandra<br>
+
             </div>
 
             <div class="copyright">
@@ -75,11 +184,13 @@
             </div>
 
             <div class="website">
-                <strong>NAMA WEB</strong><br>
-                Slogan/Keterangan/Informasi Web
+                <strong>PROFIL MAHASISWA</strong><br>
+                Sistem Informasi
             </div>
+
             <span class="width-label">100%</span>
         </footer>
+
     </div>
 
 </body>
